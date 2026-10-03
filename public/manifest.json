@@ -1,0 +1,15 @@
+{
+  "short_name": "TIS",
+  "name": "Tulas International School",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#12243a",
+  "background_color": "#f4efe6"
+}
