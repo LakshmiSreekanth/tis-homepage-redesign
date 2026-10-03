@@ -4,7 +4,7 @@ A modern, animated redesign of the Tulas International School homepage focusing 
 
 ## Live Demo
 
-- **Live URL:** Add your Vercel / Netlify link after deploy
+- **Live URL:** https://tis-homepage-redesign-green-seven.vercel.app
 - **Repository:** https://github.com/LakshmiSreekanth/tis-homepage-redesign
 
 ## Tech Stack
@@ -62,7 +62,7 @@ What to say: “Wrap a section in `<Reveal>`. It starts hidden, then animates on
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/your-username/tis-homepage-redesign.git
+git clone https://github.com/LakshmiSreekanth/tis-homepage-redesign.git
 cd tis-homepage-redesign
 ```
 
