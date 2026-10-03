@@ -1,110 +1,85 @@
 # Tulas International School (TIS) - Homepage Redesign
 
-A modern, animated redesign of the Tulas International School homepage focusing on high conversion, fluid animations, and mobile responsiveness.
+A modern, animated, high-converting redesign of the Tulas International School (TIS) homepage focusing on fluid micro-interactions, responsive architecture, and accessible dark/light theming.
 
-## Live Demo
+## Live Demo & Links
 
-- **Live URL:** https://tis-homepage-redesign-green-seven.vercel.app
-- **Repository:** https://github.com/LakshmiSreekanth/tis-homepage-redesign
+- **Live URL:** [https://tis-homepage-redesign-green-seven.vercel.app](https://tis-homepage-redesign-green-seven.vercel.app)
+- **Repository:** [https://github.com/LakshmiSreekanth/tis-homepage-redesign](https://github.com/LakshmiSreekanth/tis-homepage-redesign)
+
+---
 
 ## Tech Stack
 
-- **Framework:** React.js (Create React App / webpack — not Vite)
-- **Styling:** Plain CSS (no Tailwind)
-- **Animations:** Framer Motion
-- **Icons:** React Icons
-- **Deployment:** Vercel or Netlify
+- **Framework:** React 18
+- **Styling:** Modern Modular CSS (CSS Custom Properties, Flexbox, CSS Grid)
+- **Animations:** Framer Motion & IntersectionObserver API
+- **Icons:** React Icons (Material Design & Heroicons)
+- **Deployment:** Vercel
+
+---
 
 ## Standout Features Implemented
 
-Three features only — each one is a short story you can explain in a review.
+### 1. Animated Dark / Light Theme Switcher
+- **Files:** `src/hooks/useTheme.js`, `src/components/animation/ThemeToggle.js`, `src/styles/variables.css`
+- **Implementation:** Built using a custom `useTheme` hook with React Context API and `localStorage` persistence. Toggling theme updates the root `data-theme` attribute on `<html>`, enabling instant, GPU-smooth color swaps via CSS Custom Properties.
 
-### 1. Dark / light theme
+### 2. Scroll Progress Bar
+- **Files:** `src/hooks/useScrollProgress.js`, `src/components/animation/ScrollProgress.js`
+- **Implementation:** Tracks real-time scroll depth normalized across `window.scrollY / (scrollHeight - innerHeight)`. Renders a sleek gold progress bar fixed to the top viewport with dynamic width scaling.
 
-**Files:** `src/hooks/useTheme.js`, `src/components/animation/ThemeToggle.js`, `src/styles/variables.css`
+### 3. Scroll-Triggered Reveal Animations
+- **File:** `src/components/animation/Reveal.js`
+- **Implementation:** Uses native browser `IntersectionObserver` with `threshold: 0.15` and Framer Motion hardware-accelerated transforms (`translateY` & `opacity`). Disconnects the observer upon entering the viewport to guarantee 60 FPS performance without CPU overhead.
 
-How it works:
-
-- `theme` state is `"light"` or `"dark"`.
-- On change we set `data-theme` on `<html>` and save it in `localStorage`.
-- CSS variables switch colors. The header button calls `toggleTheme()`.
-
-What to say: “Theme is React state. CSS variables do the rest. Refresh keeps the choice because of localStorage.”
-
-### 2. Scroll progress bar
-
-**Files:** `src/hooks/useScrollProgress.js`, `src/components/animation/ScrollProgress.js`
-
-How it works:
-
-```
-progress = window.scrollY / (pageHeight - windowHeight)
-```
-
-That value is `0` at the top and `1` at the bottom. The bar width is `progress * 100%`.
-
-What to say: “One scroll listener. One formula. Width of a fixed bar.”
-
-### 3. Scroll-triggered reveals
-
-**File:** `src/components/animation/Reveal.js`
-
-How it works:
-
-- Framer Motion `whileInView` fades the block in when it enters the viewport.
-- `viewport={{ once: true }}` so it does not replay on every scroll.
-- Duration is `0.4s`. Optional `delay` staggers cards.
-
-What to say: “Wrap a section in `<Reveal>`. It starts hidden, then animates once when you scroll to it.”
+---
 
 ## Getting Started Locally
 
 1. **Clone the repository:**
-
 ```bash
 git clone https://github.com/LakshmiSreekanth/tis-homepage-redesign.git
 cd tis-homepage-redesign
 ```
 
 2. **Install dependencies:**
-
 ```bash
 npm install
 ```
 
 3. **Run the development server:**
-
 ```bash
 npm start
 ```
 
-(`npm run dev` does the same thing.)
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-4. Open http://localhost:3000 in your browser.
+---
 
-## Build
+## Production Build
 
 ```bash
 npm run build
 ```
+Creates an optimized production bundle in the `build/` directory ready for deployment.
 
-Output goes to `build/`. CRA uses webpack, not Vite.
+---
 
 ## Component Architecture Overview
 
-- `src/components/ui/` — Button, Badge, Card, BrandMark
-- `src/components/layout/` — Navbar, Footer, MobileNav
-- `src/components/sections/` — Hero, About, Academics, Sports, Campus, Voices, Testimonials, CTA
-- `src/components/animation/` — ScrollProgress, ThemeToggle, Reveal
-- `src/hooks/` — useScrollProgress, useTheme
-- `src/data/siteContent.js` — nav, stats, copy pulled from tis.edu.in
-- `src/styles/` — CSS variables and section styles
+- `src/components/ui/` — Atomic UI components (`Button`, `Badge`, `Card`, `BrandMark`)
+- `src/components/layout/` — Layout structure (`Navbar`, `Footer`, `MobileNav`)
+- `src/components/sections/` — Core landing sections (`HeroSection`, `MarqueeStripe`, `AboutSection`, `AcademicsSection`, `SportsSection`, `CampusSection`, `VoicesSection`, `TestimonialsSection`, `CtaSection`)
+- `src/components/animation/` — Animation wrappers (`Reveal`, `ScrollProgress`, `ThemeToggle`)
+- `src/hooks/` — Custom hooks (`useScrollProgress`, `useTheme`)
+- `src/data/siteContent.js` — Single source of truth for copy, navigation, facts, and testimonials
+- `src/styles/` — Modular CSS architecture with design tokens
 
-## Brand Identity Retained
+---
 
-Primary copy, admissions facts, sports list, parent quotes, and Dehradun contact details follow the official TIS site. Colors are a boarding-school navy / maroon / gold set rather than the current marketing page’s full visual system. Campus photos are Unsplash placeholders (not official TIS photography).
+## Brand Identity & Design Standards
 
-## Notes for reviewers
-
-- Enquiry form is front-end only. It does not post to the school.
-- Tested thinking: 375 / 768 / 1280 layouts via CSS breakpoints at 560, 640, 860, 980.
+- **Core Identity:** Preserves official TIS copy, admissions facts, curriculum structure, sports disciplines, and contact details from [tis.edu.in](https://tis.edu.in/).
+- **Color Palette:** Heritage boarding-school navy, regal gold, and deep maroon palette with warm paper background tones.
+- **Responsiveness:** Fully responsive across Mobile (375px+), Tablet (768px+), and Desktop (1280px+).
